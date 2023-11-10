@@ -1,0 +1,22 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Sentiment Analysis";
+}
+
+<h2>@ViewData["Title"]</h2> 
+
+<form method="post">
+    <div class="form-group">
+        <label for="text">Ingrese el texto:</label>
+        <input type="text" class="form-control" id="text" name="text" asp-for="Text" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Analizar Sentimiento</button>
+</form>
+
+@if (Model != null && Model.SentimentResult != null)
+{
+    <h3>Resultado:</h3>
+    <p>Texto: @Model.SentimentResult.Text</p>
+    <p>Sentimiento: @Model.SentimentResult.Sentiment</p>
+}
